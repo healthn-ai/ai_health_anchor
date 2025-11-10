@@ -34,7 +34,7 @@ export function LoadConfig() {
     return { entryPoint, usdt_mint, han_mint };
   } else if (ENV === "mainnet") {
     const entryPoint = clusterApiUrl("mainnet-beta");
-    const usdt_mint = new PublicKey("EPLEuxWVBbqm7WPpdgsX8a4VH3eANCE2RphqC9w3XN71");
+    const usdt_mint = new PublicKey("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB");
     const han_mint = new PublicKey("EhcC5yBAWaxrSRZCL6AK6r6qqJcvxqeepEaFepWWSSxo");
     return { entryPoint, usdt_mint, han_mint };
   }
@@ -62,12 +62,3 @@ export function init() {
 
   return { connection, wallet, provider, program };
 }
-
-
-transferSol(new Connection(LoadConfig().entryPoint, "confirmed"), deployer, new PublicKey("CcHfpiecQWB2RoWCk5MUT6oDjquKNvZQtDsFWEUumNLt"), 0.05).then((res) => {
-  console.log("transferSol success", res);
-}).catch((error) => {
-  console.error("transferSol error", error);
-});
-
-
