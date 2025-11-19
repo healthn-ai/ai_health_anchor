@@ -372,9 +372,9 @@ async function preAllToken() {
 // buyKey(buyer, 2, deployer.publicKey)
 // reward(buyer, 1_00000)
 // claim(buyer)
-// transferHan(1000_000000)
+// transferHan(100000_000000)
 
-// createUserAccount(buyer)
+// createUserAccount(deployer)
 
 // rewardHan(buyer, 2_000000)
 // claimHan(buyer)

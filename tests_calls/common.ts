@@ -8,9 +8,9 @@ import { BUYER_PATH, DEPLOYER_PATH } from "../.env/env";
 import { transferSol } from "../tests/utils";
 
 // load env variables
-// let ENV = "localhost"
+let ENV = "localhost"
 // let ENV = "dev"
-let ENV = "mainnet"
+// let ENV = "mainnet"
 
 const deployer_path = DEPLOYER_PATH;
 const buyer_path = BUYER_PATH;
@@ -24,8 +24,8 @@ export function covertStringToUint8array(str: string): Uint8Array {
 export function LoadConfig() {
   if (ENV === "localhost") {
     const entryPoint = "http://localhost:8899";
-    const usdt_mint = new PublicKey("EPLEuxWVBbqm7WPpdgsX8a4VH3eANCE2RphqC9w3XN71");
-    const han_mint = new PublicKey("8yy6NGRca2o3SVuN4xDiqxYPMGymSZbMsFFzD9qx2NcH");
+    const usdt_mint = new PublicKey("3khfcUNnYnxQqBK34k247ccRkWEUE9JLskMAh3RtMMGY");
+    const han_mint = new PublicKey("297ro7f8jiTXjCKtonRTS5cHgd9HMhE6nvhRCm5NmUvj");
     return { entryPoint, usdt_mint, han_mint };
   } else if (ENV === "dev") {
     const entryPoint = clusterApiUrl("devnet");

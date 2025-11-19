@@ -8,8 +8,8 @@ pub mod constants;
 
 use instructions::*;
 pub use constants::*;
-// 8XEpLZoHkfLFLDM31oLhBD5EpDQTFeFRXmFgrKWarH71
-declare_id!("4e2xq1qh6SkHgDKBkkrVeprScqvLbrAT68VPFfjEZkUb");
+
+declare_id!("6hX12EcW25ZPxcYzr3fKMkdG9dm8NRyYnUGnUMzCcQGJ");
 
 #[program]
 pub mod ai_health_anchor {

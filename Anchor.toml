@@ -6,7 +6,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-ai_health_anchor = "4e2xq1qh6SkHgDKBkkrVeprScqvLbrAT68VPFfjEZkUb"
+ai_health_anchor = "6hX12EcW25ZPxcYzr3fKMkdG9dm8NRyYnUGnUMzCcQGJ"
 
 [registry]
 url = "https://api.apr.dev"

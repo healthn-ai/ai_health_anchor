@@ -14,7 +14,7 @@ pub fn initialize_config(ctx: Context<InitializeConfig>) -> Result<()> {
     game_config.treasury_usdt_bump = ctx.bumps.treasury_usdt_account;
     game_config.treasury_han_bump = ctx.bumps.treasury_han_account;
     game_config.bump = ctx.bumps.game_config;
-    msg!("Greetings from: {:?}", ctx.program_id);
+    msg!("Game initialized with program id: {:?}", ctx.program_id);
     Ok(())
 }
 

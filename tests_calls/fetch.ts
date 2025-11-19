@@ -174,6 +174,7 @@ export async function findATA(publicKey: PublicKey, mint: PublicKey) {
 // fetchConfig();
 // fetchAllUser();
 // fetchUserAccount(buyer.publicKey);
+// fetchUserAccount(buyer.publicKey);
 
 // fetchTreasuryUsdtBalance();
 // fetchTreasuryUsdtBalance();
