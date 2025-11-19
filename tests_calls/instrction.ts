@@ -364,7 +364,7 @@ async function preAllToken() {
 // change mint address to usdt address
 
 // preAllToken()
-// InitGameConfig()
+InitGameConfig()
 // start()
 // buyKey(deployer, 5, buyer.publicKey)
 // buyKey(deployer, 10)

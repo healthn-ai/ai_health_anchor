@@ -8,9 +8,9 @@ import { BUYER_PATH, DEPLOYER_PATH } from "../.env/env";
 import { transferSol } from "../tests/utils";
 
 // load env variables
-let ENV = "localhost"
+// let ENV = "localhost"
 // let ENV = "dev"
-// let ENV = "mainnet"
+let ENV = "mainnet"
 
 const deployer_path = DEPLOYER_PATH;
 const buyer_path = BUYER_PATH;
