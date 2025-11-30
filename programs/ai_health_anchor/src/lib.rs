@@ -9,7 +9,7 @@ pub mod constants;
 use instructions::*;
 pub use constants::*;
 
-declare_id!("6hX12EcW25ZPxcYzr3fKMkdG9dm8NRyYnUGnUMzCcQGJ");
+declare_id!("54XW2dzuyZva1Tsap8HdSh74FhCVoocGhd8jj4tMtkgu");
 
 #[program]
 pub mod ai_health_anchor {
@@ -19,8 +19,8 @@ pub mod ai_health_anchor {
         initialize::initialize_config(ctx)
     }
 
-    pub fn buy_key(ctx: Context<BuyKey>, count: u64, referral_key: Option<Pubkey>) -> Result<()> {
-        buy_key::buy_key(ctx, count, referral_key)
+    pub fn buy_key(ctx: Context<BuyKey>, round_number: u64, count: u64, referral_key: Option<Pubkey>) -> Result<()> {
+        buy_key::buy_key(ctx, round_number, count, referral_key)
     }        
 
     pub fn reward(ctx: Context<Reward>, usdt_amount: u64) -> Result<()> {

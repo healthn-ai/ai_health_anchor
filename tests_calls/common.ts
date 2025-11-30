@@ -8,9 +8,9 @@ import { BUYER_PATH, DEPLOYER_PATH } from "../.env/env";
 import { transferSol } from "../tests/utils";
 
 // load env variables
-// let ENV = "localhost"
+let ENV = "localhost"
 // let ENV = "dev"
-let ENV = "mainnet"
+// let ENV = "mainnet"
 
 const deployer_path = DEPLOYER_PATH;
 const buyer_path = BUYER_PATH;
@@ -24,19 +24,23 @@ export function covertStringToUint8array(str: string): Uint8Array {
 export function LoadConfig() {
   if (ENV === "localhost") {
     const entryPoint = "http://localhost:8899";
-    const usdt_mint = new PublicKey("3khfcUNnYnxQqBK34k247ccRkWEUE9JLskMAh3RtMMGY");
-    const han_mint = new PublicKey("297ro7f8jiTXjCKtonRTS5cHgd9HMhE6nvhRCm5NmUvj");
-    return { entryPoint, usdt_mint, han_mint };
+    const usdt_mint = new PublicKey("48SgHTM9Wdc76F9gTtL2gRgwJQbLvNcHwD1adeh9teAi");
+    // const usdt_mint = new PublicKey("4cw33VVBv7gyhouTQ591ZpRXcP2FJ6qCdH9BCfdkVm67");
+    const han_mint = new PublicKey("8A4koJ4Tjkw6WZ3fCZbRaZZPfNPuJrzYhBkEUMKs5xTJ");
+    const round_number = 1;
+    return { entryPoint, usdt_mint, han_mint, round_number };
   } else if (ENV === "dev") {
     const entryPoint = clusterApiUrl("devnet");
     const usdt_mint = new PublicKey("4Q1mWwJoEcBY3REVnXCMGGHf5avYBxWAWT7jybNHUicx");
     const han_mint = new PublicKey("7U8qShkYTDfJVQGcoPzTgMXygQTuGDu9RxF5ZA3UX581");
-    return { entryPoint, usdt_mint, han_mint };
+    const round_number = 1;
+    return { entryPoint, usdt_mint, han_mint, round_number };
   } else if (ENV === "mainnet") {
     const entryPoint = clusterApiUrl("mainnet-beta");
     const usdt_mint = new PublicKey("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB");
     const han_mint = new PublicKey("EhcC5yBAWaxrSRZCL6AK6r6qqJcvxqeepEaFepWWSSxo");
-    return { entryPoint, usdt_mint, han_mint };
+    const round_number = 1;
+    return { entryPoint, usdt_mint, han_mint, round_number };
   }
 }
 

@@ -5,10 +5,12 @@ use crate::state::*;
 use crate::constants::*;
 use crate::error::*;
 
-pub fn buy_key(ctx: Context<BuyKey>, count: u64, referral_key: Option<Pubkey>) -> Result<()> {
+pub fn buy_key(ctx: Context<BuyKey>, round_number: u64,  count: u64, referral_key: Option<Pubkey>) -> Result<()> {
     let game_config = &mut ctx.accounts.game_config;
 
     require_eq!(game_config.state, RUNNING_STATE, CustomErrorCode::InvalidState);
+    require_eq!(game_config.round_number, round_number, CustomErrorCode::InvalidRoundNumber);
+    require_gt!(count, 0, CustomErrorCode::InvalidCount);
 
     let price = game_config.current_key_price;
     let pay_amount = count.checked_mul(price).unwrap();
@@ -46,8 +48,10 @@ pub fn buy_key(ctx: Context<BuyKey>, count: u64, referral_key: Option<Pubkey>) -
     }
 
     let user_account = &mut ctx.accounts.user_account;
+    
     user_account.key_count = user_account.key_count.checked_add(count).unwrap();
-    user_account.total_usdt_spent = user_account.total_usdt_spent.checked_add(pay_amount).unwrap();
+    // 如何判定total_usdt_spent 不超过最大值？
+    user_account.total_usdt_spent = user_account.total_usdt_spent.checked_add(pay_amount).ok_or(CustomErrorCode::MathOverflow)?;
     user_account.last_key_purchase_time = now;
     user_account.bump = ctx.bumps.user_account;
 
@@ -95,9 +99,14 @@ pub struct BuyKey<'info> {
     )]
     pub user_usdt_account: InterfaceAccount<'info, TokenAccount>,
 
-    #[account(mut)]
+    #[account(
+        mut,
+        seeds = [b"treasury_usdt_account"],
+        bump = game_config.treasury_usdt_bump,
+    )]
     pub treasury_usdt_account: InterfaceAccount<'info, TokenAccount>,
 
+    #[account(constraint = usdt_mint.key() == game_config.usdt_mint_key @ CustomErrorCode::InvalidMint)]
     pub usdt_mint: InterfaceAccount<'info, Mint>,
 
     pub token_program: Interface<'info, TokenInterface>,

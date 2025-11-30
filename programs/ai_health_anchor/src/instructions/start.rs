@@ -9,6 +9,7 @@ pub fn start(ctx: Context<START>) -> Result<()> {
     if game_config.state != NONSTART_STATE && game_config.state != END_STATE {
         return Err(CustomErrorCode::InvalidState.into());
     }
+
     let now = Clock::get()?.unix_timestamp;
     game_config.jackpot_pool = game_config.next_round_pool;
     game_config.dividend_pool = 0;
@@ -33,6 +34,8 @@ pub struct START<'info> {
     #[account(
         mut,
         has_one = authority @ CustomErrorCode::InvalidAuthority,
+        seeds = [b"game_config"], 
+        bump = game_config.bump,
     )]
     pub game_config: Account<'info, GameConfig>,
 

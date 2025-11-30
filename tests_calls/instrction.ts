@@ -10,7 +10,7 @@ const TOKEN_PROGRAM: typeof TOKEN_2022_PROGRAM_ID | typeof TOKEN_PROGRAM_ID =
   TOKEN_2022_PROGRAM_ID;
 
 
-const { usdt_mint, han_mint } = LoadConfig();
+const { usdt_mint, han_mint, round_number } = LoadConfig();
 
 
 const { deployer, buyer } = initUsers();
@@ -95,7 +95,6 @@ async function start() {
   const tx = await program.methods
     .start()
     .accounts({
-      // @ts-expect-error Type error in anchor dependency
       authority: deployer.publicKey,
       gameConfig: game_config,
     }).signers([deployer])
@@ -132,8 +131,8 @@ async function buyKey(user: Keypair, count: number, referral_key?: PublicKey | n
 
   // build method parameters dynamically based on whether there is a referral_key
   const methodBuilder = referral_key
-    ? program.methods.buyKey(new BN(count), referral_key)
-    : program.methods.buyKey(new BN(count), null);
+    ? program.methods.buyKey(new BN(round_number), new BN(count), referral_key)
+    : program.methods.buyKey(new BN(round_number), new BN(count), null);
 
 
   const tx = await methodBuilder
@@ -364,21 +363,21 @@ async function preAllToken() {
 // change mint address to usdt address
 
 // preAllToken()
-InitGameConfig()
+// InitGameConfig()
 // start()
-// buyKey(deployer, 5, buyer.publicKey)
+// buyKey(deployer, 1, buyer.publicKey)
+
 // buyKey(deployer, 10)
 // buyKey(buyer, 5)
 // buyKey(buyer, 2, deployer.publicKey)
 // reward(buyer, 1_00000)
 // claim(buyer)
-// transferHan(100000_000000)
+
 
 // createUserAccount(deployer)
 
+// transferHan(100000_000000)
 // rewardHan(buyer, 2_000000)
 // claimHan(buyer)
 // stop()
 // claim(buyer)
-
-// closeUserAccount(buyer);

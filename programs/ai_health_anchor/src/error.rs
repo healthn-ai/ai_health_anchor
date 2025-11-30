@@ -25,6 +25,9 @@ pub enum CustomErrorCode {
 
     #[msg("Invalid round number")]
     InvalidRoundNumber,
+
+    #[msg("Invalid count")]
+    InvalidCount,
     
     #[msg("Reward less than total earned")]
     RewardLessThanTotalEarned,
@@ -39,5 +42,8 @@ pub enum CustomErrorCode {
     NotOverEndTime,
     
     #[msg("Remaining balance")]
-    Remainingbalance
+    Remainingbalance,
+
+    #[msg("Math overflow")]
+    MathOverflow
 }

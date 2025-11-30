@@ -78,10 +78,14 @@ pub struct Claim<'info> {
     )]
     pub user_usdt_account: InterfaceAccount<'info, TokenAccount>,
 
-    #[account(mint::token_program = token_program)]
+    #[account(constraint = usdt_mint.key() == game_config.usdt_mint_key @ CustomErrorCode::InvalidMint)]
     pub usdt_mint: InterfaceAccount<'info, Mint>,
 
-    #[account(mut)]
+    #[account(
+        mut,
+        seeds = [b"treasury_usdt_account"],
+        bump = game_config.treasury_usdt_bump,
+    )]
     pub treasury_usdt_account: InterfaceAccount<'info, TokenAccount>,
 
     pub system_program: Program<'info, System>,
@@ -116,14 +120,18 @@ pub struct ClaimHan<'info> {
     #[account(
         mut,
         seeds = [b"game_config"],
-        bump = game_config.bump,
+        bump,
     )]
     pub game_config: Account<'info, GameConfig>,
 
-    #[account(mut)]
+    #[account(
+        mut,
+        seeds = [b"treasury_han_account"],
+        bump,
+    )]
     pub treasury_han_account: InterfaceAccount<'info, TokenAccount>,
 
-    #[account(mint::token_program = token_program)]
+    #[account(constraint = han_mint.key() == game_config.han_mint_key @ CustomErrorCode::InvalidMint)]
     pub han_mint: InterfaceAccount<'info, Mint>,
 
     pub system_program: Program<'info, System>,

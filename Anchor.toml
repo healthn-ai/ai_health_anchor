@@ -6,14 +6,14 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-ai_health_anchor = "6hX12EcW25ZPxcYzr3fKMkdG9dm8NRyYnUGnUMzCcQGJ"
+ai_health_anchor = "54XW2dzuyZva1Tsap8HdSh74FhCVoocGhd8jj4tMtkgu"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
 cluster = "localnet"
-wallet = "~/.config/solana/AI_prod.json"
+wallet = "~/.config/solana/ANU1sBoytR2a8tpvMFygMXg5M6XZipyiZVwrhwUmKvQV.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"

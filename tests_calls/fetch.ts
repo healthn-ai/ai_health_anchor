@@ -1,11 +1,11 @@
 import { Keypair, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
-import { init, initUsers} from "./common";
+import { init, initUsers, LoadConfig} from "./common";
 import * as anchor from "@coral-xyz/anchor";
 import { closeAccount, getAssociatedTokenAddressSync, TOKEN_PROGRAM_ID } from "@solana/spl-token";
 
 
 const { connection, program } = init();
-
+const { usdt_mint, han_mint } = LoadConfig();
 const {deployer, buyer } = initUsers();
 
 export async function fetchGameConfig() {
@@ -171,7 +171,7 @@ export async function findATA(publicKey: PublicKey, mint: PublicKey) {
 
 
 // fetchGameConfig();
-// fetchConfig();
+fetchConfig();
 // fetchAllUser();
 // fetchUserAccount(buyer.publicKey);
 // fetchUserAccount(buyer.publicKey);
@@ -180,7 +180,7 @@ export async function findATA(publicKey: PublicKey, mint: PublicKey) {
 // fetchTreasuryUsdtBalance();
 // fetchTreasuryHanBalance();
 
-// getTokenBalance(connection, getBuyerTokenAccount(buyer, han_mint));
+// getTokenBalance(connection, getBuyerTokenAccount(deployer, han_mint));
 
 // getSolBalance(connection, buyer.publicKey).then(balance => {
 //     console.log("buyerSolBalance:", balance);

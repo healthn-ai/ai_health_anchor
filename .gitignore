@@ -5,8 +5,9 @@ target
 node_modules
 test-ledger
 .yarn
-*.lock
+# *.lock
 package-lock.json
 .docs
 .env/
 .idea/
+.cursorrules

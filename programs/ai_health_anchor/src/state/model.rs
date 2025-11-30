@@ -1,5 +1,6 @@
 use anchor_lang::prelude::*;
 
+
 #[account]
 #[derive(InitSpace)]
 pub struct GameConfig {
@@ -8,7 +9,6 @@ pub struct GameConfig {
     pub current_key_price: u64,         // Current ticket price (denominated in $USDT_DECIMALS)
     pub end_time: i64,                  // Round end time (Unix timestamp)
     pub last_buyer_key: Pubkey,         // Last buyer's key
-    pub last_buyer_time: i64,           // Timestamp of the last buyer (Unix timestamp)
     pub jackpot_pool: u64,              // Current jackpot pool
     pub dividend_pool: u64,             // Current dividend pool
     pub next_round_pool: u64,           // Next round seed pool
@@ -19,6 +19,8 @@ pub struct GameConfig {
     pub authority: Pubkey,              // Program authority
     pub treasury_usdt_bump: u8,         // USDT treasury bump
     pub treasury_han_bump: u8,          // HAN treasury bump
+    pub usdt_mint_key: Pubkey,          // USDT mint key
+    pub han_mint_key: Pubkey,          // HAN mint key
     pub bump: u8,                       // Game config bump
 }
 

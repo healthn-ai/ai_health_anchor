@@ -13,4 +13,3 @@ pub const INIT_PRICE: u64 = 100000;              // Initial price 0.1U
 pub const NONSTART_STATE: u8 = 0;
 pub const RUNNING_STATE: u8 = 1;
 pub const END_STATE: u8 = 2;
-pub const ALL_END_STATE: u8 = 3;
