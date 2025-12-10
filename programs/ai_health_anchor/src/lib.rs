@@ -9,7 +9,7 @@ pub mod constants;
 use instructions::*;
 pub use constants::*;
 
-declare_id!("54XW2dzuyZva1Tsap8HdSh74FhCVoocGhd8jj4tMtkgu");
+declare_id!("2NqsQ7zQ9fq8azdWe5NGTW2yrpSHhfogf7TkVavd8hDn");
 
 #[program]
 pub mod ai_health_anchor {

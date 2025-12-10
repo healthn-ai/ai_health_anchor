@@ -365,7 +365,7 @@ async function preAllToken() {
 // preAllToken()
 // InitGameConfig()
 // start()
-// buyKey(deployer, 1, buyer.publicKey)
+buyKey(deployer, 1, buyer.publicKey)
 
 // buyKey(deployer, 10)
 // buyKey(buyer, 5)

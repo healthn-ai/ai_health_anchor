@@ -44,6 +44,8 @@ export async function fetchConfig() {
     console.log("nextRoundPool", config.nextRoundPool.toNumber());
     console.log("leaderboardPool", config.leaderboardPool.toNumber());
     console.log("randomRewardPool", config.randomRewardPool.toNumber());
+    console.log("usdtMintKey", config.usdtMintKey.toBase58());
+    console.log("hanMintKey", config.hanMintKey.toBase58());
     console.log("authority", config.authority.toBase58());
 }
 
